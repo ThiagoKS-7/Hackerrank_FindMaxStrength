@@ -1,27 +1,40 @@
 package ibm_exercises;
 
 import java.io.*;
+import java.util.*;
 
 class Program {
 
-    static long getFactorial(int n) {
-        if (n > 9) {
-            String stringNum = Integer.toString(n);
-            int size = stringNum.length();
-            int counter = stringNum.length();
-            int first = Integer.parseInt(stringNum.substring(0));
-            int last = Integer.parseInt(stringNum.substring(size - 1));
-            while (counter > 1) {
-                first = first * (counter - 1);
-                last = last * (counter - 1);
-                counter--;
-            }
-            return first + last;
+    static int getFactorial(int n) {
+        int i = n - 1;
+        while (i > 1) {
+            n *= i;
+            i--;
         }
-        return 0;
+        System.out.println("FACTORIAL " + n);
+        return n;
     }
 
+    static List<Integer> mountTeam(int initialValue) {
+        ArrayList<Integer> team = new ArrayList<Integer>(Arrays.asList(initialValue));
+        for (int i = 0; i <= 4; i++) {
+            team.add(getFactorial(team.get(i)));
+            System.out.println(team);
+
+        }
+        return team;
+    }
+
+    /*
+     * Dado um numero inicial, calcular "times" com base na seguinte regra
+     * Lider é o maior número do time
+     * cada membro de um time so pode chamar integrantes que sejam iguais a soma de
+     * suas fatoriais
+     * Objetivo - Calcular força de um time, usando a formula -> lider * numero de
+     * integrantes
+     */
+
     public static void main(String[] args) throws IOException {
-        System.out.println(getFactorial(23));
+        System.out.println(mountTeam(5));
     }
 }
