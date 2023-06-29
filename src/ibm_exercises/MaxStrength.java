@@ -3,6 +3,8 @@ package ibm_exercises;
 import java.util.*;
 
 public class MaxStrength {
+    static final int MAX_TEAM_SIZE = 10;
+
     private static int getFactorial(int n) {
         int i = n - 1;
         while (i > 1) {
@@ -35,7 +37,7 @@ public class MaxStrength {
 
     private static List<Integer> mountTeam(int n) {
         ArrayList<Integer> team = new ArrayList<Integer>(Arrays.asList(n));
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < MAX_TEAM_SIZE; i++) {
             team.add(findFactorial(team.get(i - 1)));
         }
         return team;
